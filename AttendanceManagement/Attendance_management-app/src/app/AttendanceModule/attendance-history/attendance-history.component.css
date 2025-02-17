@@ -1,0 +1,59 @@
+.card{
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: auto;
+   z-index: 1;
+}
+
+.tableresponsive{
+    width: 100%;
+    height: max-content;
+    overflow-x: scroll;
+}
+.attendance-page{
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.containers{
+    width: 75%;
+}
+
+.openfilterbutton{
+    margin-bottom: 20px;
+}
+.filterbtn{
+    margin: 20px;
+    width: 100%;
+}
+
+.optionbtn{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.filtersection{
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .filterbtn{
+        width: 70%;
+    }
+    .optionbtn{
+        margin-top: 2px;
+    }
+    .tableresponsive{
+        font-size: 15px;
+    }
+    .optionbtn{
+        font-size: 10px;
+    }
+    .table{
+        width: max-content;
+    }
+}

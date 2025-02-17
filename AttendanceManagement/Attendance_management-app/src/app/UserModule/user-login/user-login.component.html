@@ -1,0 +1,33 @@
+<div class="loginpage d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-4" style="width: 350px; border-radius: 10px;">
+        <h3 class="text-center mb-3 text-primary" style="font-weight: bold;">Login</h3>
+        <form [formGroup]="LoginForm" (ngSubmit)="AuthenticateUser()">
+            <div class="mb-3">
+                <label for="userid" class="form-label">User ID</label>
+                <input type="text" id="userid" formControlName="id" (blur)="validate('id')" class="form-control hovereffect" placeholder="Enter your User ID">
+            </div>
+            <div class="mb-3 passwordinput">
+                <label for="userpassword" class="form-label">Password</label>
+                <input [type]="showPassword?'text':'password'" id="userpassword" formControlName="password" (blur)="validate('password')" class="form-control hovereffect" placeholder="Enter your Password">
+                <span (click)="togglePassword()" class="showpasswordicon">
+                    <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </span>
+            </div>
+            <button type="submit" class="btn btn-primary hovereffect secondspace logginbutton" [disabled]="!LoginForm.valid">
+                Login
+            </button>
+            <div class="text-center mt-3">
+                <a [routerLink]="['/userregistration']"  style="color:black">New User</a> |
+                <a [routerLink]="['/forgotpassword']" style="color:black">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="Note">
+            <p>
+                Please don't refresh after Login
+            </p>
+        </div>
+    </div>
+
+</div>
+
+

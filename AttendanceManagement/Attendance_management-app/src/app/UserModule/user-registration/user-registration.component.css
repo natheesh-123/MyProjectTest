@@ -1,0 +1,41 @@
+.registerpage{
+    color: black;
+    font-family:none;
+    background-image: url('../../../../public/school.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding-top: 50px;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    /* padding-bottom: ; */
+    width: 100%;
+}
+
+.div{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.regbtn{
+    position: relative;
+    bottom: -80px;
+}
+
+.imagebtn{
+    position: relative;
+    bottom: 20px;
+}
+
+
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .registerpage{
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+}

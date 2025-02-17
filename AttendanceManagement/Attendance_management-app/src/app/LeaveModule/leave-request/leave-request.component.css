@@ -1,0 +1,103 @@
+/* Container Styling */
+
+.maincontainer{
+  background-image: url("../../../../public/LeaveModulebackground.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.leaverequestpage{
+  font-style: italic;
+  font-family: none;
+  font-weight: bolder;
+
+  } 
+
+  .card{
+    min-width: max-content;
+    min-height: max-content;
+  }
+  
+  
+.container {
+  width: 75vw;
+  max-width: 600px;
+  min-width: max-content;
+  height: max-content;
+  padding: 20px;
+  background-color: #E3F2FD;
+  border-radius: 20px;
+  box-shadow: 8px -6px 8px rgba(0, 0, 0, 0.1);
+  }
+  .submitbtn{
+    min-width: max-content;
+  }
+  /* Heading Styling */
+  .container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+ 
+  
+  /* Submit Button Styling */
+  button {
+    align-self: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1976d2;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the submit button */
+  button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Responsive Styling */
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @media screen and (max-width:769px) {
+  }
+  @media screen and (max-width:425px) {   
+    button{
+      margin-top: 20px;
+    }
+  }

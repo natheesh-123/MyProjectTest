@@ -1,0 +1,242 @@
+1. Backend (ASP.NET) Setup
+
+
+
+
+
+
+1.1 Install Required Packages
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.2
+dotnet add package Microsoft.IdentityModel.Tokens --version 8.0.2
+dotnet add package System.IdentityModel.Tokens.Jwt --version 8.0.2
+
+
+
+
+
+
+
+
+
+1.2 Configure JWT in  Program.cs
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add JWT Authentication
+var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:SecretKey"]);
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
+builder.Services.AddAuthorization();
+
+var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.3 Add JWT Configuration in appsettings.json
+
+  "Jwt": {
+    "SecretKey": "your-very-secure-secret-key",
+    "Issuer": "your-issuer",
+    "Audience": "your-audience"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.4 Generate JWT Token on Login
+Create a method to generate a JWT token when the user logs in.
+
+csharp
+Copy
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+
+public string GenerateJwtToken(string email, string role)
+{
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
+    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var claims = new[]
+    {
+        new Claim(ClaimTypes.Email, email),
+        new Claim(ClaimTypes.Role, role)
+    };
+
+    var token = new JwtSecurityToken(
+        issuer: _configuration["Jwt:Issuer"],
+        audience: _configuration["Jwt:Audience"],
+        claims: claims,
+        expires: DateTime.Now.AddMinutes(30),
+        signingCredentials: credentials
+    );
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+1.5 Protect Endpoints with Roles
+Use the [Authorize] attribute to protect your endpoints and restrict access based on roles.
+
+csharp
+Copy
+[ApiController]
+[Route("api/[controller]")]
+public class UsersController : ControllerBase
+{
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public IActionResult GetAllUsers()
+    {
+        // Fetch all users logic
+    }
+
+    [HttpGet("{id}")]
+    [Authorize(Roles = "Admin,User")]
+    public IActionResult GetUserById(int id)
+    {
+        // Fetch single user logic
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult UpdateUser(int id, User user)
+    {
+        // Update user logic
+    }
+}
+2. Frontend (Angular) Setup
+2.1 Store JWT Token
+When the user logs in, store the JWT token in localStorage or sessionStorage.
+
+typescript
+Copy
+login(email: string, password: string) {
+  this.http.post<{ token: string }>('/api/auth/login', { email, password })
+    .subscribe(response => {
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['/dashboard']);
+    });
+}
+2.2 Add JWT Token to HTTP Requests
+Use an HttpInterceptor to automatically attach the JWT token to outgoing requests.
+
+typescript
+Copy
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class JwtInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
+    if (token) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+    }
+    return next.handle(req);
+  }
+}
+Register the interceptor in your app.module.ts:
+
+typescript
+Copy
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './jwt.interceptor';
+
+@NgModule({
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ]
+})
+export class AppModule {}
+2.3 Handle Role-Based Access
+You can decode the JWT token to check the user's role and control access to certain features.
+
+typescript
+Copy
+import jwtDecode from 'jwt-decode';
+
+getUserRole(): string {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const decodedToken: any = jwtDecode(token);
+    return decodedToken.role;
+  }
+  return '';
+}
+Use this method to conditionally display or hide UI elements:
+
+html
+Copy
+<div *ngIf="getUserRole() === 'Admin'">
+  <button (click)="editUser()">Edit User</button>
+</div>
+Run HTML
+3. Testing and Debugging
+Test the login flow to ensure the JWT token is generated and stored correctly.
+
+Verify that protected endpoints are only accessible with valid tokens and roles.
+
+Use tools like Postman to test your backend API.
+
+4. Security Considerations
+Use HTTPS to encrypt communication between the frontend and backend.
+
+Store the JWT secret key securely (e.g., in environment variables or Azure Key Vault).
+
+Implement token expiration and refresh tokens for better security.
+
+By following these steps, you can implement JWT-based authentication and role-based authorization in your Angular and ASP.NET application.

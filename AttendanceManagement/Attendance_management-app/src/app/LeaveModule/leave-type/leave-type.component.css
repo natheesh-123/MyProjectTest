@@ -1,0 +1,46 @@
+.leavetypes{
+    font-style: italic;
+  font-family: none;
+  font-weight: 600;
+}
+
+.maincontainer{
+  background-image: url("../../../../public/LeaveModulebackground.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+
+}
+
+.containers{
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+tr{
+  text-align: center;
+}
+
+.card{
+  width: 100%;
+  min-width: max-content;
+  max-width: 500px;
+  height: max-content;
+}
+
+
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+  .maincontainer{
+    overflow-x: scroll;
+  }
+  .containers{
+    width: 80vw;
+  }
+}

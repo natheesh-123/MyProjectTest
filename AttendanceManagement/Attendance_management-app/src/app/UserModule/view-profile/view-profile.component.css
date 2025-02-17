@@ -1,0 +1,173 @@
+
+   
+
+  /* General Styling */
+  .editprofilecontainer{
+    padding: 50px 0px;
+    background-image: url("../../../../public/EditProfileBackground4.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-repeat: repeat-y; */
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.profile {
+    /* background: linear-gradient(45deg, #00c7c7, #bf00a8); */
+    background-image: url("../../../../public/EditProfileBackground3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-repeat: repeat-y; */
+    background-size: cover;
+    /* background: rgba(255, 255, 255, 0.597); */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: auto;
+    position: relative;
+    width: max-content;
+}
+.editprofile{
+justify-items: center;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #818181;
+    margin-top:20px;
+}
+
+.profile hr {
+    margin: 15px;
+}
+
+button {
+    margin-top: 10px;
+}
+.changeprofilebtn{
+    background-image: linear-gradient(to right,rgb(0,154,154), rgba(170, 165, 165, 0.839) );
+    color: white;
+}
+.changedetails {
+    position: absolute;
+    color: white;
+    width: 360px;
+    font-weight: 900;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    /* right: 20px; */
+    /* top:20px; */
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.changedetails:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(66, 66, 66);
+    box-shadow: 0px 0px 5px grey;
+}
+.secondspace{
+    overflow: hidden;
+}
+
+/* User Details */
+
+.userdetailsContainer{
+    justify-items: center;
+    background: rgba(255, 255, 255, 0);
+    font-family: none;
+    font-weight: lighter;
+    font-size:large;
+    width: max-content;
+}
+.userdetails {
+    display: flex;
+    background: rgb(255, 255, 255);
+    font-family: none;
+    font-weight: lighter;
+    font-size:large;
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    margin: 20px auto;
+    width: max-content;
+    text-align: left;
+}
+
+.detailslist {
+    list-style-type: none;
+    padding: 0;
+}
+
+.detailslist li {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.detailslist span {
+    font-weight: normal;
+    color: #555;
+    margin-left: 5px;
+}
+
+/* Form Styling */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+}
+
+/* Buttons */
+.btn-success, .btn-danger {
+    width: 48%;
+    display: inline-block;
+}
+
+.btn-danger {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width:769px) {
+    
+}
+@media screen and (max-width:425px) {   
+    .userdetails{
+        font-size: 12px;
+    }
+}

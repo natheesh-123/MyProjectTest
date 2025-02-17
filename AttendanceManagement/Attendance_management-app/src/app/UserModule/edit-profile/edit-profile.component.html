@@ -1,0 +1,74 @@
+<div class="editprofilecontainer">
+
+    <div class="profile">
+        <div *ngIf="!editingPhoto" >
+            <img [src]="profileImageUrl" alt="">
+        </div>
+        <button type="button" style="font-weight: 600; margin: 10px;" class="changeprofilebtn btn" *ngIf="canEdit && !editingPhoto" (click)="editingPhoto=true;editingDetails=false">Change profile</button>
+        
+        <div class="editprofile" *ngIf="editingPhoto">
+            <img [src]="profileImageUrl" alt="">
+            <form>    
+                <div>
+                    <input type="file" (change)="onFileSelected($event)" accept="image/jpg"/>
+                </div>
+            </form>    
+            <button (click)="onUpload()" class="btn btn-success me-1" >Upload</button>
+            <button (click)="editingPhoto=false" class="btn btn-danger ms-0">Cancel</button>
+        </div>
+    
+    
+        <div class="userdetailsContainer" *ngIf="!editingDetails">    
+            <div class="userdetails" >
+                <div>
+                    <ul class="detailslist">
+                        <li>Id<span>:</span>{{user.id}}</li>
+                        <li>Name<span>:</span>{{user.name | titlecase}}</li>
+                        <li>Email<span>:</span>{{user.email}}</li>
+                        <li>Password<span>:</span>                                
+                            <input [type]="showPassword ? 'text' : 'password'" id="showuserpassword" [value]="user.password" disabled>
+                            <span (click)="togglePassword()"  style="cursor: pointer">
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                            </span></li>
+                        <li>Role<span>:</span>{{user.role | titlecase}}</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="">
+                <button type="button" class="btn changedetails secondspace" (click)="changeToForm()">Change Details</button>
+            </div>
+        </div>
+        
+        
+        
+        <div *ngIf="editingDetails" class="editdetailsform">
+            
+            <form [formGroup]="detailsForm" (ngSubmit)="updateUser()">
+                <div class="">
+                    <label for="username">User Name</label>
+                    <input type="text" id="username" name="name" formControlName="name" (blur)="validate('name')">
+                </div>
+                <div class="">
+                    <label for="useremail">User Email</label>
+                    <input type="text" id="useremail" name="email" formControlName="email" (blur)="validate('email')">
+                </div>
+                <div class="mb-3 position-relative">
+                    <label for="userpassword" class="form-label">Password</label>
+                    <input [type]="showPassword ? 'text' : 'password'" id="userpassword" class="form-control" formControlName="password" (blur)="validate('password')"/>
+                    <span (click)="togglePassword()"  style="position: absolute; right: 10px; top: 38px; cursor: pointer;z-index: 5;">
+                        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                    </span>
+                </div>
+                <button class="btn btn-success optionbtn" type="submit" *ngIf="detailsForm.valid">submit</button>
+                <button class="btn btn-danger optionbtn" type="button" (click)="editingDetails=false">Cancel</button>
+                
+            </form>   
+        </div> 
+    </div>
+</div>
+
+
+
+
+  

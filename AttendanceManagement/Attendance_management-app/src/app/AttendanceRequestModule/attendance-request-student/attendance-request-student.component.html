@@ -1,0 +1,42 @@
+
+  <div class="containers d-flex justify-content-center align-items-center ">
+    <div class="card shadow-lg p-4" style="width: 800px; border-radius: 10px;">
+        <h3 class="text-center mb-3" style="font-weight:bold;">Students Attendance Requests</h3>
+        
+        <div class="tablecontainer">
+            <table class="table table-bordered table-striped text-center">
+                <thead >
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let request of attendanceRequests">
+                        <td>{{ request.userId }}</td>
+                        <td>{{ request.user.name }}</td>
+                        <td>{{ request.date }}</td>
+                        <td>
+                            <span >
+                                {{ request.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-success optionbtn" (click)="onSubmit(request)" [id]="'Approve' + request.userId + request.date">
+                                Approve
+                            </button>
+                            <button class="btn btn-danger optionbtn" (click)="onReject(request)" [id]="'Reject' + request.userId + request.date">
+                               Reject
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+  </div>
+  

@@ -1,0 +1,110 @@
+/* General Styles */
+.user {
+    /* background-color: #f8f9fa; */
+    background-image: url("../../../../public/DashBoardBackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 50px;
+    font-family:none;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: scroll;
+  }
+  
+ .quicklinksgroup{
+  margin: 0px 30vw;
+ }
+  
+  /* User Details Card */
+  .userdetails {
+    justify-content: center;
+    /* background: #484848; */
+    background-image: radial-gradient(rgba(59, 58, 58, 0.39)30%, rgba(86, 86, 86, 0.433), rgba(92, 92, 92, 0.729)90%,#d0a01a9a);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: max-content;
+    margin: 20px auto;
+  }
+  
+  .detailslist {
+    list-style-type: none;
+    padding: 0;
+    font-size: 22px;
+  }
+  
+  .detailslist li {
+    padding: 8px 0;
+    font-weight: 500;
+  }
+  
+  .detailslist span {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #ffffff;
+  }
+  
+  /* Welcome Text */
+  h2 {
+    text-align: center;
+    color: #d09f1a;
+    font-weight: bold;
+  }
+  
+  /* Quick Links */
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  div a {
+    display: block;
+    font-size: 20px;
+    /* background: #474747; */
+    background-image: radial-gradient(rgba(59, 58, 58, 0.39)30%, rgba(86, 86, 86, 0.433), rgba(92, 92, 92, 0.729)90%,#d0a01a9a);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  div a:hover {
+    /* background: #0056b3; */
+    transform: translateY(-2px);
+  }
+  
+
+  
+
+
+
+
+
+
+
+  @media screen and (max-width:769px) {
+    .quicklinksgroup{
+      margin: 0px 20vw;
+     }    
+  }
+  @media screen and (max-width:425px) {   
+    .detailslist{
+      font-size: 14px;
+    }
+    .quicklinksgroup{
+      margin: 0px 10vw;
+     } 
+    .quicklinks{
+      font-size:14px;
+    }
+  }
+  

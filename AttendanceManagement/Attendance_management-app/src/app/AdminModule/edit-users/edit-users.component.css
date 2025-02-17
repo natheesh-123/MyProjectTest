@@ -1,0 +1,31 @@
+#pagecountindicator{
+    width:50px;
+    border: 1px solid black;
+    margin: 0px;
+    display: grid;
+    align-items: center;
+}
+
+.filterformcontainer{
+    margin-bottom: 10px;
+}
+
+.tablecontainer{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.maincontainer{
+    width: 100%;
+}
+.table{
+    min-width: max-content;
+}
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .tablecontainer{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+#MessageBox{
+    width: 25vw;
+    /* height: 100vh; */
+    position: fixed;
+    right: 5px;
+    top:5px;
+}
+
+.messagetext{
+    box-shadow: 0px 0px 3px black;
+    padding: 5px 10px;
+    margin-top: 5px;
+    position: relative;
+    animation: boxinout 6s linear;
+}
+.successmessage{
+    /* background-color: rgb(39, 165, 0); */
+    background: linear-gradient( to right,green , rgb(2, 216, 2));
+    color: rgb(255, 255, 255);
+}
+.warningmessage{
+    /* background-color:  rgb(174, 81, 0); */
+    background: linear-gradient( to right,rgb(174, 81, 0),  rgb(210, 98, 0));
+    color: rgb(241, 241, 241);
+}
+.failuremessage{
+    /* background-color: brown; */
+    background: linear-gradient(to right, brown, rgb(202, 53, 53));
+    color: rgb(255, 156, 156);
+}
+.normalmessage{
+    background:linear-gradient(to right, rgb(239, 238, 238), rgb(226, 224, 224));
+    color: rgb(75, 75, 75);
+}
+.successmessage::after,.warningmessage::after, .failuremessage::after, .normalmessage::after{
+    content: '';
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    animation: loadbar 6s linear ;
+}
+.successmessage::after{
+    border: 2px solid rgb(0, 61, 0);
+}
+.warningmessage::after{
+    border: 2px solid orangered;
+}
+.failuremessage::after{
+    border: 2px solid red;
+}
+.normalmessage::after{
+    border: 2px solid rgb(74, 74, 74);
+}
+
+@keyframes loadbar {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width:0%
+    }
+}
+@keyframes boxinout {
+    0%{
+        opacity: 1;
+        left:-100%;
+    }
+    5%{
+        left:0px
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:769px) {
+    #MessageBox{
+        width: 50vw;
+    }  
+    
+}
+@media screen and (max-width:425px) {
+    #MessageBox{
+        width: 70vw;
+    }  
+    
+}

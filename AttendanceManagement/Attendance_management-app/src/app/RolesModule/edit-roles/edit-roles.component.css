@@ -1,0 +1,26 @@
+.optionbtn{
+    width: 100px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .optionbtn{
+        font-size: 10px;
+        width: 65px;
+    }
+    .containers{
+        margin-left: 5vw;
+        margin-right: 5vw;
+     }
+}

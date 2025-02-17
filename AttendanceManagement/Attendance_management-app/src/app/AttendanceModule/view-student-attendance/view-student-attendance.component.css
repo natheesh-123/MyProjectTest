@@ -1,0 +1,26 @@
+.openfilterbutton{
+    margin-bottom: 20px;
+}
+.filterbtn{
+    margin: 20px;
+    width: 100%;
+}
+
+.optionbtn{
+    width: 100px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .filterbtn{
+        width: 70%;
+    }
+    .optionbtn{
+        margin-top: 2px;
+    }
+    .optionbtn{
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,71 @@
+<div class="maincontainer" style="min-height:100vh; padding:15px"> 
+  <div class="containers">
+    <div class="card p-4 shadow-lg" style="width: max-content;">
+      <h3 class="text-center mb-4" style="font-size: x-large; font-weight: 600;">Teacher Leave Requests</h3>
+
+      <div *ngIf="leaveRequests.length === 0" class="text-center text-danger">
+        <h5>Currently no more leave requests</h5>
+      </div>
+      <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-primary">
+          <tr class="tablerow">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Leave Type</th>
+            <th>Date</th>
+            <th>Reason</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tablerow" *ngFor="let request of leaveRequests">
+            <td>{{ request.user.id }}</td>
+            <td>{{ request.user.name }}</td>
+            <td>{{ request.leaveType.name}}</td>
+            <td>{{ request.date | date:"dd/MM/yyyy" }}</td>
+            <td>{{ request.reason }}</td>
+            <td><button type="button" class="btn btn-success actionbtn" (click)="updateLeaveStatus(request,'Leave')">Accept</button></td>
+            <td><button type="button" class="btn btn-danger actionbtn" (click)="updateLeaveStatus(request,'Rejected')">Reject</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+
+
+    <div class="card p-4 shadow-lg" style="width: max-content;">
+      <h3 class="text-center mb-4" style="font-size: x-large; font-weight: 600;">Requests History</h3>
+
+      <div *ngIf="leaveRequestHistory.length === 0" class="text-center text-danger">
+        <h5>No leave requests</h5>
+      </div>
+
+
+      <!-- Leave Requests Table -->
+      <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Leave Type</th>
+            <th>Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of leaveRequestHistory">
+            <td>{{ request.user.id }}</td>
+            <td>{{ request.user.name }}</td>
+            <td>{{ request.leaveType.name}}</td>
+            <td>{{ request.date }}</td>
+            <td>{{ request.reason }}</td>
+            <td>{{ request.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+  </div>
+</div>

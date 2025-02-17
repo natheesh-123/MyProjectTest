@@ -1,0 +1,45 @@
+.containers{
+    background-image: url('../../../../public/AttendanceRequestsModule2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+th{
+    /* background-color: rgb(12, 138, 96); */
+    background: linear-gradient(to right, rgb(6, 166, 113), rgb(4, 221, 142));
+}
+
+.mb-3{
+    color: rgb(62, 62, 62);
+}
+
+.tablecontainer{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+.optionbtn{
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:769px) {
+}
+@media screen and (max-width:425px) {   
+    .table{
+        font-size: 10px;
+    }
+    .optionbtn{
+        font-size: 10px;
+        width: 65px;
+    }
+}

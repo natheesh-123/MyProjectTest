@@ -1,0 +1,54 @@
+<div class="editprofilecontainer">
+
+    <div class="profile">
+        <div *ngIf="!editingPhoto" >
+            <img [src]="profileImageUrl" alt="">
+        </div>    
+    
+        <div class="userdetailsContainer" *ngIf="!editingDetails">    
+            <div class="userdetails" >
+                <div>
+                    <ul class="detailslist">
+                        <li>Id<span>:</span>{{user.id}}</li>
+                        <li>Name<span>:</span>{{user.name | titlecase}}</li>
+                        <li>Email<span>:</span>{{user.email}}</li>
+                        <li>Password<span>:</span>                                
+                            <input [type]="showPassword ? 'text' : 'password'" id="showuserpassword" [value]="user.password" disabled>
+                            <span (click)="togglePassword()"  style="cursor: pointer">
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                            </span></li>
+                        <li>Role<span>:</span>{{user.role | titlecase}}</li>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+    </div>
+    
+    
+    
+    <div *ngIf="editingDetails">
+    
+        <form [formGroup]="detailsForm" (ngSubmit)="updateUser()">
+            <div class="">
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="name" formControlName="name">
+            </div>
+            <div class="">
+                <label for="useremail">User Email</label>
+                <input type="text" id="useremail" name="email" formControlName="email">
+            </div>
+            <div class="">
+                <label for="userpassword">Password</label>
+                <input type="text" id="userpassword" name="password" formControlName="password">
+            </div>
+            <button class="btn btn-success w-25" type="submit" *ngIf="detailsForm.valid">submit</button>
+            <button class="btn btn-danger w-25 m-10" type="button" (click)="editingDetails=false">Cancel</button>
+    
+        </form>   
+    </div> 
+</div>
+
+
+
+
+  

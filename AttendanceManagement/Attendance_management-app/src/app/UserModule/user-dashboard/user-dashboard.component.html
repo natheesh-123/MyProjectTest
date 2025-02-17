@@ -1,0 +1,74 @@
+<div class="homecontainer">
+  <div class="NavBar">
+    <button class="hamburger-btn btn btn-primary" (click)="toggleSidebar()">☰</button>
+    <img class="profileimage" [routerLink]="['/dashboard/profile']" [src]="profileImageUrl" alt="Profile Image">
+    <div class="bashboardbtngroup" style="margin-left: 20px;">
+      <h6 class="" style="color: white;">Role : {{this.user.role | uppercase}}</h6>
+      <h4 class="text-styling dashboardbtn" [routerLink]="['/dashboard']" >Dashboard</h4>
+    </div>
+  </div>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <!-- [ngClass]="{'sidebar-open': isSidebarOpen}" -->
+    <div id="sidebar" class="sidebar shadow-lg p-3" >
+      <div class="sidebar-menu mt-4" style="font-family:Georgia, 'Times New Roman', Times, serif;font-style: italic;">
+        <button class="closesidemenubtn btn btn-primary" (click)="LogoutSequence()">
+          <i class="bi bi-box-arrow-in-left"></i>
+          logout
+        </button>  
+        <h4 (click)="toggleSidebar()" class="sidebardashboard text-styling" [routerLink]="['/dashboard']" style="cursor: pointer;">Dashboard</h4>
+          <details>
+            <summary class="btn btn-seconday dropdowns">Profile</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewProfile')" [routerLink]="['/dashboard/profile']" title="View Your Profile Details">Your Profile<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('EditProfile')" [routerLink]="['/dashboard/editprofile']" title="Edit Your Profile Details">Edit Profile<br></a>
+        </details>
+        <details>
+            <summary class="btn btn-seconday dropdowns">Attendance</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('MarkAttendance')" [routerLink]="['/dashboard/markatt']" title="Give Your Daily Attendance">Give Attendance<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('AttendanceHistory')" [routerLink]="['/dashboard/atthistory']" title="View Your Previous Attendances">Your Histoy<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewStudentAttendance')" [routerLink]="['/dashboard/studentatt']" title="View Previous Student Attendances">Students<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewTeacherAttendance')" [routerLink]="['/dashboard/teacheratt']" title="View Previous Teacher Attendances">Teachers<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewAllAttendance')" [routerLink]="['/dashboard/allattendance']" title="View Previous Teacher Attendances">All<br></a>
+            <details style="width: max-content;margin-left: 10px;">
+              <summary class="btn btn-seconday dropdowns2">Requests</summary>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('StudentAttendanceRequest')" [routerLink]="['/dashboard/studentattreq']" title="View Attendance Requests from Students for Today">Students<br></a>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('TeachersAttendanceRequest')" [routerLink]="['/dashboard/teacherattreq']" title="View Attendance Requests from Teacher for Today">Teachers<br></a>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('AllAttendanceRequest')" [routerLink]="['/dashboard/allattreq']" title="View Attendance Requests from Everyone for Today">All<br></a>
+          </details>
+        </details>
+        <details>
+            <summary class="btn btn-seconday dropdowns">Roles</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewRoles')" [routerLink]="['/dashboard/viewroles']" title="View Available Roles">View Roles<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('EditRoles')" [routerLink]="['/dashboard/editroles']" title="Edit Available Roles">Edit Roles<br></a>
+        </details>
+        <details>
+            <summary class="btn btn-seconday dropdowns">Permissions</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewPermissions')" [routerLink]="['/dashboard/viewpermissions']" title="View Available Permissions for the Roles">View Permissions<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('EditPermissions')" [routerLink]="['/dashboard/editpermissions']" title="Edit Available Permissions for the Roles">Edit Permissions<br></a>
+        </details>
+        <details>
+            <summary class="btn btn-seconday dropdowns">Leave</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('MakeLeaveRequest')" [routerLink]="['/dashboard/reqleave']" title="Request Leave for some day">Request Leave<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('LeaveRequestHistory')" [routerLink]="['/dashboard/reqleavehistory']" title="View Your Previous Leave Requests">Request History<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewLeaveTypes')"  [routerLink]="['/dashboard/leavetypes']" title="View Different Leave Types">Leave Types<br></a>
+            <details style="width: max-content;margin-left: 10px;">
+              <summary class="btn btn-seconday dropdowns2">Requests</summary>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('StudentLeaveRequest')"  [routerLink]="['/dashboard/studentleavereq']" title="View Leave Requests from Students">Students<br></a>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('TeacherLeaveRequest')"  [routerLink]="['/dashboard/teacherleavereq']" title="View Leave Requests from Teachers">Teachers<br></a>
+              <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('AllLeaveRequest')"  [routerLink]="['/dashboard/allleavereq']" title="View Leave Requests from Everyone">All Requests<br></a>
+          </details>
+        </details>
+        <details>
+            <summary class="btn btn-seconday dropdowns">Users</summary>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('ViewUsers')"  [routerLink]="['/dashboard/userlist']" title="View all Available Users">View Users<br></a>
+            <a (click)="toggleSidebar()" *ngIf="user.permissions.includes('NewUserRequests')" [routerLink]="['/dashboard/newuserreq']" title="Edit Available Users">Approve User<br></a>
+        </details>
+      </div>
+    </div>
+   
+    </div>
+    <div class="pageoutput">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+  

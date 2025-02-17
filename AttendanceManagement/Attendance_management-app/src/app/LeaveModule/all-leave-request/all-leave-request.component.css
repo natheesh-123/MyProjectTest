@@ -1,0 +1,35 @@
+.maincontainer{
+    background-image: url("../../../../public/LeaveModulebackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+        justify-content: center;
+  }
+  tr{
+    text-align: center;
+  }
+  .table{
+    min-width: 700px;
+  }
+
+  .containers{
+    overflow-y: scroll;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+
+  @media screen and (max-width:769px) {
+  }
+  @media screen and (max-width:425px) {   
+    .actionbtn, .containers{
+      font-size: 10px;
+    }
+  }
