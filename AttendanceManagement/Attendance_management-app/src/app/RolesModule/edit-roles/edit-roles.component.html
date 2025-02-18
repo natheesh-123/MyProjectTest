@@ -42,10 +42,11 @@
             </table>
         </form>
         <div class="text-center mt-3">
-            <button class="btn btn-primary" (click)="changeroAddRole()">Add Role</button>
+            <button id="RoleCheckAddRole" class="btn btn-primary" (click)="changeroAddRole()">Add Role</button>
+            <!-- id="RoleCheckAddRole" -->
             <form *ngIf="isAddingNewRole" [formGroup]="roleEditForm" (ngSubmit)="addRole()">
                 <div class="input-group mt-2">
-                    <input type="text" class="form-control" placeholder="Role Name" formControlName="roleName">
+                    <input type="text" class="form-control" placeholder="Role Name" formControlName="RoleroleName">
                     <button type="submit" class="btn btn-success">Add</button>
                 </div>
             </form>

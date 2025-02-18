@@ -2636,11 +2636,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natheeshkumar.b\\Desktop\\17proj\\Attendance_Management\\Attendance_management\\Attendance_management.csproj",
+      "projectUniqueName": "C:\\Users\\natheeshkumar.b\\Desktop\\Testing17\\AttendanceManagement\\Attendance_management\\Attendance_management.csproj",
       "projectName": "Attendance_management",
-      "projectPath": "C:\\Users\\natheeshkumar.b\\Desktop\\17proj\\Attendance_Management\\Attendance_management\\Attendance_management.csproj",
+      "projectPath": "C:\\Users\\natheeshkumar.b\\Desktop\\Testing17\\AttendanceManagement\\Attendance_management\\Attendance_management.csproj",
       "packagesPath": "C:\\Users\\natheeshkumar.b\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natheeshkumar.b\\Desktop\\17proj\\Attendance_Management\\Attendance_management\\obj\\",
+      "outputPath": "C:\\Users\\natheeshkumar.b\\Desktop\\Testing17\\AttendanceManagement\\Attendance_management\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
